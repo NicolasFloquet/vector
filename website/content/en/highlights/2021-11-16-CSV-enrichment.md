@@ -2,7 +2,7 @@
 ---
 date: "2021-11-15"
 title: "CSV enrichment of data"
-description: "A guide that addresses the new CSV enrichment feature"
+description: "A guide to using the new CSV enrichment feature"
 authors: ["barieom", "lucperkins"]
 pr_numbers: []
 release: "0.18.0"
@@ -15,11 +15,12 @@ badges:
 
 We're excited to share that we've released a new feature that allows users to enrich events flowing through the topology using a CSV file. 
 
-[Enrichment tables][] enables events to have more context and be more readable. For example, when collecting events from IoT devices, you may want to keep your payloads coming from the devices to be small; enrichment of events with CSV allows users to reformat the data to be more human readable (e.g., converting data emitted by the IoT device — `1`, `2`, `3` — to "Low battery", "Medium battery", "High battery").
+[Enrichment tables][] enables events to have more context and be more readable. This feature works by looking at a single row in a pointed CSV file, allowing users to map the data into the event using the full power of VRL. 
 
-The `csv_file` works by looking at a single row in a pointed CSV file, allowing users to map the data into the event using the full power of VRL. 
+For example, when collecting events from IoT devices, you may want to keep your payloads coming from the devices to be small; by enriching events from a CSV file, users can reformat the data to be more human readable and provide better context (e.g., converting data emitted by the IoT device — `1`, `2`, `3` — to `"Low battery"`, `"Medium battery"`, `"High battery"`).
 
-Let's stick with the IoT example from above. Our CSV file contains the below:
+
+Let's stick with the IoT example from above, and let's assume that our CSV file contains the below:
 ```
 code,message
 1,"device battery full"
@@ -58,7 +59,7 @@ row = get_enrichment_table_record!("codes", { "code": code })
 '''
 ```
 
-For our next steps, we'll look to add encryption to this enrichment feature. If you any feedback, let us know on our [Discord chat][] or [Twitter][].
+For our next steps, we'll look to add encryption to this enrichment feature, but if you any feedback in the meantime, let us know on our [Discord chat][] or [Twitter][].
 
 
 [Enrichment tables]:/docs/reference/glossary/#enrichment-tables
